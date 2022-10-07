@@ -8,5 +8,3 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
            'us-central1-docker.pkg.dev/${PROJECT_ID}/poc-dbt-image']
-    options:
-      logging: CLOUD_LOGGING_ONLY
