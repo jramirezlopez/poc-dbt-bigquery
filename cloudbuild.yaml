@@ -7,6 +7,6 @@ steps:
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
-           'us-central1-docker.pkg.dev/poc-bco-chile/poc-dbt']
+           'us-central1-docker.pkg.dev/poc-bco-chile/poc-dbt/poc-dbt-image']
 options:
   logging: CLOUD_LOGGING_ONLY
