@@ -1,7 +1,7 @@
 steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t',
+    args: ['build', 'f','Dockerfile','-t'
            'us-central1-docker.pkg.dev/poc-bco-chile/poc-dbt/poc-dbt/',
            '.']
   # Docker Push
