@@ -1,12 +1,12 @@
 steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f','Dockerfile','-t',
-           'us-central1-docker.pkg.dev/poc-bco-chile/poc-dbt/poc-dbt/',
+    args: ['build', '-t',
+           'us-central1-docker.pkg.dev/${PROJECT_ID}/poc-dbt',
            '.']
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
-           'us-central1-docker.pkg.dev/poc-bco-chile/poc-dbt/poc-dbt/']
+           'us-central1-docker.pkg.dev/${PROJECT_ID}/poc-dbt']
 options:
   logging: CLOUD_LOGGING_ONLY
