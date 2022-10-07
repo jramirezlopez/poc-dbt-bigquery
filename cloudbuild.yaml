@@ -7,6 +7,6 @@ steps:
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
-           'us-central1-docker.pkg.dev/${PROJECT_ID}/poc-dbt']
+           'us-central1-docker.pkg.dev/${PROJECT_ID}/poc-dbt/']
 options:
   logging: CLOUD_LOGGING_ONLY
