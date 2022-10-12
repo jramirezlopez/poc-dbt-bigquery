@@ -25,7 +25,6 @@ with airflow.DAG(
 
     print_token = bash.BashOperator(
         task_id='get_token',
-        #bash_command='gcloud auth print-identity-token "--audiences=https://us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/poc-bco-chile/jobs/poc-dbt-image"' # The end point of the deployed Cloud Run container
         bash_command='gcloud auth print-access-token'
     )
 
@@ -35,7 +34,8 @@ with airflow.DAG(
         task_id='exec_cloud_run_dbt',
         method='POST',
         http_conn_id='cloud_run',
-        endpoint='us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/poc-bco-chile/jobs/poc-dbt-image:run',
+        endpoint='us-central1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/poc-bco-chile/jobs/poc-dbt'
+                 '-image:run',
         headers={'Authorization': 'Bearer ' + token },
     )
 
