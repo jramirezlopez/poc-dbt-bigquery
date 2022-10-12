@@ -23,14 +23,14 @@ with airflow.DAG(
         default_args=default_args,
         schedule_interval=datetime.timedelta(days=1)) as dag:
 
-    print_token = bash.BashOperator(
+    get_token = bash.BashOperator(
         task_id='get_token',
         bash_command='gcloud auth print-access-token'
     )
 
-    token = "{{ task_instance.xcom_pull(task_ids='get_token') }}" # gets output from 'print_token' task
+    token = "{{ task_instance.xcom_pull(task_ids='get_token') }}"
 
-    task_get_op = SimpleHttpOperator(
+    exec_cloud_run_dbt = SimpleHttpOperator(
         task_id='exec_cloud_run_dbt',
         method='POST',
         http_conn_id='cloud_run',
@@ -49,4 +49,4 @@ with airflow.DAG(
         python_callable=process_data_from_http,
         provide_context=True
     )
-    print_token >> task_get_op >> process_data
+    get_token >> exec_cloud_run_dbt >> process_data
