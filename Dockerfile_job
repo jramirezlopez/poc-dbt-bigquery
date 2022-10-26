@@ -7,4 +7,5 @@ RUN python3 -m pip install dbt-bigquery
 ENV DBT_PROFILES_DIR=/app/
 WORKDIR /app/
 COPY . /app/
-ENTRYPOINT "./server"
+CMD ["run"]
+ENTRYPOINT ["dbt"]
