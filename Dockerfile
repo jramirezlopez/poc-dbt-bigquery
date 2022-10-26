@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install dbt-bigquery
-USER root
+
 WORKDIR /dbt
 COPY --from=builder /app/server ./
 COPY script.sh ./
