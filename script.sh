@@ -1,0 +1,1 @@
+dbt run --project-dir poc_dbt
